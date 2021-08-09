@@ -15,6 +15,11 @@ struct SliderTF: View {
     
     var body: some View {
         TextField("", text: $textValue, onCommit: checkValue)
+            .multilineTextAlignment(.trailing)
+            .border(Color.black)
+            .alert(isPresented: $showAlert, content: {
+                Alert(title: Text("Wrong RGB format"), message: Text("You should enter value between 0 and 255"))
+            })
     }
 }
 
@@ -23,6 +28,7 @@ extension SliderTF {
         if let value = Int(textValue), (0...Int(255.0)).contains(value) {
             self.value = Double(value)
         }  else {
+            showAlert = true
             value = 0
             textValue = "0"
         }

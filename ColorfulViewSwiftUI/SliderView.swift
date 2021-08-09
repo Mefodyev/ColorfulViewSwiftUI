@@ -27,7 +27,7 @@ struct SliderView: View {
             
             Text("\(sliderValue, specifier: "%0.0f")")
             Slider(value: $sliderValue, in: 0...255, step: 1)
-                .frame(width: UIScreen.main.bounds.width - 120)
+                .frame(width: UIScreen.main.bounds.width - 150)
                 .accentColor(color)
                 .onChange(of: sliderValue, perform: { value in
                     textValue = "\(lround(sliderValue))"
